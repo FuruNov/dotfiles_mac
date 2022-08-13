@@ -1,3 +1,4 @@
+export PATH="$HOME/homebrew/bin:$PATH"
 export PATH="/Applications/Julia-1.6.app/Contents/Resources/julia/bin:$PATH"
 export PNPM_HOME="/Users/taka2/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"

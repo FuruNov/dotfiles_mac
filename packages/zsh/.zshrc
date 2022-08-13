@@ -1,4 +1,4 @@
-#!/bin/xsh
+#!/bin/zsh
 # 色を使用出来るようにする
 autoload -Uz colors
 colors
@@ -15,26 +15,9 @@ SAVEHIST=1000000
 autoload -Uz select-word-style
 select-word-style default
 
-########################################
-
 # 補完機能を有効にする
 autoload -Uz compinit
 compinit
-
-########################################
-
-# vcs_info
-autoload -Uz vcs_info
-autoload -Uz add-zsh-hook
-
-function _update_vcs_info_msg() {
-    LANG=en_US.UTF-8 vcs_info
-    RPROMPT="${vcs_info_msg_0_}"
-}
-
-add-zsh-hook precmd _update_vcs_info_msg
-
-########################################
 
 # オプション
 setopt print_eight_bit # 日本語ファイル名を表示可能にする
@@ -52,6 +35,17 @@ setopt hist_ignore_all_dups # 同じコマンドをヒストリに残さない
 setopt hist_ignore_space    # スペースから始まるコマンド行はヒストリに残さない
 setopt hist_reduce_blanks   # ヒストリに保存するときに余分なスペースを削除する
 setopt extended_glob        # 高機能なワイルドカード展開を使用する
+
+# vcs_info
+autoload -Uz vcs_info
+autoload -Uz add-zsh-hook
+
+function _update_vcs_info_msg() {
+    LANG=en_US.UTF-8 vcs_info
+    RPROMPT="${vcs_info_msg_0_}"
+}
+
+add-zsh-hook precmd _update_vcs_info_msg
 
 # Activate Starship
 eval "$(starship init zsh)"

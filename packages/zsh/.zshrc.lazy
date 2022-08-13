@@ -1,3 +1,4 @@
+#!/bin/zsh
 # exaを使って見やすくかつ必要なフォルダのみ高速に表示
 alias te='exa -alhF --git-ignore --group-directories-first --time-style=long-iso'
 alias te2='exa -alhF --git-ignore --group-directories-first --time-style=long-iso -T -L=2 --ignore-glob=".git|node_modules"'
