@@ -31,4 +31,5 @@ source ~/.zshrc
 
 echo "シンボリックリンクを貼る"
 echo "Symlinking dotfiles..."
-sh ~/dotfiles/shell/symlink && echo "Done."
+stow --override='.*' -v -d ~/dotfiles/packages -t ~ starship zsh vim git yabai skhd
+echo "Done."
