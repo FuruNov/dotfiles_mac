@@ -1,0 +1,172 @@
+# exaを使って見やすくかつ必要なフォルダのみ高速に表示
+alias te='exa -alhF --git-ignore --group-directories-first --time-style=long-iso'
+alias te2='exa -alhF --git-ignore --group-directories-first --time-style=long-iso -T -L=2 --ignore-glob=".git|node_modules"'
+alias te3='exa -alhF --git-ignore --group-directories-first --time-style=long-iso -T -L=3 --ignore-glob=".git|node_modules"'
+
+# 階層を上がるのが楽
+alias ..='cd ..'
+
+# コマンドラインの文字をスッキリさせる
+alias c='clear'
+
+# 事故防止　コマンド実行の確認を出す
+alias rm='rm -i' # 削除
+alias mv='mv -i' # リネーム、ファイル・ディレクトリの移動
+alias cp='cp -i' # コピー
+
+alias mkdir='mkdir -p'
+
+# viでも強制的にvimを開く
+alias vi='vim'
+
+# pyでpythonを起動
+alias py='python3'
+alias python='python3'
+
+# lsよりコマンド打ちやすいllで、色付き隠しファイル込属性区別付きls
+alias ll='ls -alFG'
+
+# ファイル内文字コピー
+alias pbcp='pbcopy <'
+
+# 直下ディレクトリ全てのファイル名検索
+alias figr='fd . | grep'
+
+# 直下ディレクトリ全てのファイル内の文章検索
+alias stgr='fd . | xargs grep'
+
+# 自分の作業フォルダへ移動
+alias cdwk='cd ~/work'
+
+# メモリ監視
+alias pls='ps aux'
+
+# 容量監視
+alias sls='du -sh ./*'
+
+# app系アップデート
+# alias apup='sudo apt update && sudo apt upgrade'
+
+# fzf
+export FZF_COMPLETION_TRIGGER="," # default: '**'
+export FZF_DEFAULT_COMMAND="rg --files"
+export FZF_DEFAULT_OPTS='--reverse --color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229 --color info:150,prompt:110,spinner:150,pointer:167,marker:174'
+
+export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+### fcd - cd to selected directory
+function fcd() {
+    local dir
+    dir=$(find ${1:-.} -path '*/\.*' -prune \
+        -o -type d -print 2>/dev/null | fzf +m) &&
+        cd "$dir"
+}
+
+### fzf-z-search
+function fzf-z-search() {
+    local res=$(z | sort -rn | cut -c 12- | fzf)
+    if [ -n "$res" ]; then
+        BUFFER+="cd $res"
+        zle accept-line
+    else
+        return 1
+    fi
+}
+zle -N fzf-z-search
+bindkey '^f' fzf-z-search
+
+### 履歴検索
+function select-history() {
+    BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+    CURSOR=$#BUFFER
+}
+zle -N select-history
+bindkey '^r' select-history
+
+# sudo の後のコマンドでエイリアスを有効にする
+alias sudo='sudo '
+
+# git の高速化（https://github.com/microsoft/WSL/issues/4401）
+# checks to see if we are in a windows or linux dir
+function isWinDir {
+    case $PWD/ in
+    /mnt/*) return $(true) ;;
+    *) return $(false) ;;
+    esac
+}
+
+# wrap the git command to either run windows git or linux
+function git {
+    if isWinDir; then
+        git.exe "$@"
+    else
+        /usr/bin/git "$@"
+    fi
+}
+
+# 新規リポジトリ作成 & 最初のコミット
+function gcre() {
+    git init
+    git add -A && git commit
+    read name"?type repo name        : "
+    read description"?type repo description : "
+    hub create ${name} -p ${description}
+    git push --set-upstream origin master
+    hub browse
+}
+
+# コミット
+function gcom() {
+    read "?type commit message >> " ms
+    git add -A && git status && git commit -m "${ms}"
+}
+
+# fbr - checkout git branch
+function fbr() {
+    local branches branch
+    branches=$(git branch -vv) &&
+        branch=$(echo "$branches" | fzf +m) &&
+        git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+# fbrm - checkout git branch (including remote branches)
+function fbrm() {
+    local branches branch
+    branches=$(git branch --all | grep -v HEAD) &&
+        branch=$(echo "$branches" |
+            fzf-tmux -d $((2 + $(wc -l <<<"$branches"))) +m) &&
+        git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+# fshow - git commit browser
+function fshow() {
+    git log --graph --color=always \
+        --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+        fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+            --bind "ctrl-m:execute:
+                (grep -o '[a-f0-9]\{7\}' | head -1 |
+                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+                {}
+FZF-EOF"
+}
+
+# 解凍
+function tunz() {
+    case $1 in
+    *.zip) unzip $1 ;;
+    *.tgz) tar xvzf $1 ;;
+    *.tbz2) tar xvjf $1 ;;
+    *.tar) tar xvf $1 ;;
+    *.tar.gz) tar xvzf $1 ;;
+    *.tar.bz2) tar xvjf $1 ;;
+    *) echo "Unable to extract '$1'" ;;
+    esac
+}
+
+# グローバルエイリアス
+alias -g F='| fzf'
+alias -g L='| less'
+alias -g G='| rg'
