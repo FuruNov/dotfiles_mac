@@ -10,7 +10,7 @@ else
   echo "Homebrew already installed."
 fi
 
-if [ ! -d ~/dotfiles ]; then
+if [ ! -d ~/mac-dotfiles ]; then
   echo "Cloning dotfiles..."
   git clone https://github.com/FuruNov/mac-dotfiles.git
 else
@@ -19,7 +19,7 @@ fi
 
 # Install some software
 echo "Installing some software & library..."
-brew bundle -v --file=./dotfiles/Brewfile
+brew bundle -v --file=./mac-dotfiles/Brewfile
 
 if [ ! -d ~/.config ]; then
   echo "Creating ~/.config directory..."
@@ -31,4 +31,4 @@ source ~/.zshrc
 
 echo "シンボリックリンクを貼る"
 echo "Symlinking dotfiles..."
-sh ~/dotfiles/shell/symlink && echo "Done."
+sh ~/mac-dotfiles/shell/symlink && echo "Done."
