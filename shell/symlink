@@ -1,4 +1,4 @@
 #!/bin/sh
 
 echo "Symlinking dotfiles..."
-stow -v -d ~/mac-dotfiles/packages -t ~ starship zsh vim git yabai skhd
+stow -v -d ~/dotfiles/packages -t ~ starship zsh vim git yabai skhd
