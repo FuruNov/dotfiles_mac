@@ -1,4 +1,10 @@
 #!/bin/zsh
+
+# グローバルエイリアス
+alias -g F='| fzf'
+alias -g L='| less'
+alias -g G='| rg'
+
 # exaを使って見やすくかつ必要なフォルダのみ高速に表示
 alias te='exa -alhF --git-ignore --group-directories-first --time-style=long-iso'
 alias te2='exa -alhF --git-ignore --group-directories-first --time-style=long-iso -T -L=2 --ignore-glob=".git|node_modules"'
@@ -141,7 +147,7 @@ function fshow() {
                 (grep -o '[a-f0-9]\{7\}' | head -1 |
                 xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
                 {}
-FZF-EOF"
+                FZF-EOF"
 }
 
 # 解凍
@@ -156,8 +162,3 @@ function tunz() {
     *) echo "Unable to extract '$1'" ;;
     esac
 }
-
-# グローバルエイリアス
-alias -g F='| fzf'
-alias -g L='| less'
-alias -g G='| rg'
