@@ -6,13 +6,12 @@ local events = eventtap.event.types
 local DoublePress = {}
 function DoublePress.new(key, action)
     local module = {}
-
     module.timeFrame = 1
     module.key = key
     module.action = action
     if not action then
         module.action = function()
-            alert("You double tapped " .. module.key .. "!")
+            alert("You double tapped " .. module.key)
         end
     end
     local timeFirstControl, firstDown, secondDown = 0, false, false

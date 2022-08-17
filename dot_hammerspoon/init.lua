@@ -20,7 +20,7 @@ end)
 
 -- Start DoublePress Key Config
 doublePress.new("ctrl", function()
-    alert("You double tapped " .. "ctrl" .. "!!")
+    alert("You double tapped ctrl")
 end)
 doublePress.new("cmd")
 doublePress.new("alt")

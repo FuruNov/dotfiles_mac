@@ -195,6 +195,16 @@
                     },
                     "to": [
                         {
+                            "key_code": "escape"
+                        }
+                    ]
+                },
+                {
+                    "from": {
+                        "key_code": "japanese_kana"
+                    },
+                    "to": [
+                        {
                             "key_code": "f19"
                         }
                     ]
