@@ -14,4 +14,11 @@ module.remap = function(mods, key, pressFn)
     hs.hotkey.bind(mods, key, pressFn, nil, pressFn)
 end
 
+module.setMethod = function(name)
+    return function()
+        hs.keycodes.setMethod(name)
+        -- hs.alert.show(hs.keycodes.currentMethod())
+    end
+end
+
 return module
