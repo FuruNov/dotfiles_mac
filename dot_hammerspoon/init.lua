@@ -4,11 +4,13 @@ local hyper = require("hyper")
 local utils = require("utils")
 -- local vim = require("vim")
 
+-- Set eisu to toggle input method
 hs.hotkey.bind({}, "eisu", utils.setMethod("Hiragana (Google)"), utils.setMethod("Alphanumeric (Google)"))
 -- Set Hyper Key to F19
 hs.hotkey.bind({}, 'F19', hyper.pressed, hyper.released)
 
 -- Start Hyper Key Config
+
 -- Set Hyper Key Bindings
 hyper:bind({}, 'g', function()
     alert("Hyper Key pressed")
@@ -32,12 +34,18 @@ end
 -- End Hyper Key Config
 
 -- Start DoublePress Key Config
-doublePress.new("ctrl")
-doublePress.new("cmd")
-doublePress.new("alt", function()
-    hs.application.launchOrFocus("Warp")
-end)
-doublePress.new("shift")
+
+for key, func in pairs({
+    ctrl = nil,
+    cmd = nil,
+    alt = function()
+        hs.application.launchOrFocus("Warp")
+    end,
+    shift = nil
+}) do
+    doublePress.new(key, func)
+end
+
 -- End DoublePress Key Config
 
 hs.alert.show("Config loaded")

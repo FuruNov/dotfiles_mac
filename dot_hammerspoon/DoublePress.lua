@@ -9,11 +9,6 @@ function DoublePress.new(key, action)
     module.timeFrame = 1
     module.key = key
     module.action = action
-    if not action then
-        module.action = function()
-            alert(module.key .. "×2")
-        end
-    end
     local timeFirstControl, firstDown, secondDown = 0, false, false
     -- verify that no keyboard flags are being pressed
     local noFlags = function(ev)
