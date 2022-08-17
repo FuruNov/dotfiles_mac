@@ -16,14 +16,27 @@ end)
 hyper:bind({}, "r", function()
     hs.reload()
 end)
+
+for key, app in pairs({
+    a = "Activity Monitor",
+    c = "Visual Studio Code",
+    o = "Obsidian",
+    s = "Slack",
+    t = "Microsoft Teams",
+    v = "Vivaldi",
+    z = "Zotero"
+}) do
+    utils.launchApp(hyper, key, app)
+end
+
 -- End Hyper Key Config
 
 -- Start DoublePress Key Config
-doublePress.new("ctrl", function()
-    alert("You double tapped ctrl")
-end)
+doublePress.new("ctrl")
 doublePress.new("cmd")
-doublePress.new("alt")
+doublePress.new("alt", function()
+    hs.application.launchOrFocus("Warp")
+end)
 doublePress.new("shift")
 -- End DoublePress Key Config
 

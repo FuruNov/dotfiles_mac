@@ -21,4 +21,10 @@ module.setMethod = function(name)
     end
 end
 
+module.launchApp = function(hyper, key, app)
+    hyper:bind({}, key, function()
+        hs.application.launchOrFocus(app)
+    end)
+end
+
 return module

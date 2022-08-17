@@ -11,7 +11,7 @@ function DoublePress.new(key, action)
     module.action = action
     if not action then
         module.action = function()
-            alert("You double tapped " .. module.key)
+            alert(module.key .. "×2")
         end
     end
     local timeFirstControl, firstDown, secondDown = 0, false, false

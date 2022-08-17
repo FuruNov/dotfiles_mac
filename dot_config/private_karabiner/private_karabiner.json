@@ -195,7 +195,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "escape"
+                            "key_code": "f19"
                         }
                     ]
                 },
@@ -205,7 +205,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "f19"
+                            "key_code": "escape"
                         }
                     ]
                 }
