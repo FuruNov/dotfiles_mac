@@ -2,6 +2,7 @@ local alert = require("hs.alert")
 local doublePress = require("doublePress")
 local hyper = require("hyper")
 local utils = require("utils")
+local Caffeine = hs.loadSpoon("Caffeine")
 -- local vim = require("vim")
 
 -- Set eisu to toggle input method
@@ -11,17 +12,36 @@ hs.hotkey.bind({}, 'F19', hyper.pressed, hyper.released)
 
 -- Start Hyper Key Config
 
--- Set Hyper Key Bindings
 hyper:bind({}, 'g', function()
-    alert("Hyper Key pressed")
+    -- alert("Hyper Key pressed")
+    local screen = hs.mouse.getCurrentScreen()
+    if screen:getBrightness() > 0 then
+        screen:setBrightness(0)
+        Caffeine:start()
+    else
+        screen:setBrightness(0.25)
+        Caffeine:stop()
+    end
 end)
-hyper:bind({}, "r", function()
-    hs.reload()
+hyper:bind({}, "r", hs.reload)
+hyper:bind({}, "h", utils.pressFn({"alt"}, "left"), nil, utils.pressFn({"alt"}, "left"))
+hyper:bind({}, "j", utils.pressFn("down"), nil, utils.pressFn("down"))
+hyper:bind({}, "k", utils.pressFn("up"), nil, utils.pressFn("up"))
+hyper:bind({}, "l", utils.pressFn({"alt"}, "right"), nil, utils.pressFn({"alt"}, "right"))
+hyper:bind({}, "d", function()
+    utils.pressFn("home")()
+    utils.pressFn("home")()
+    utils.pressFn({"shift"}, "end")()
+    utils.pressFn("delete")()
+    utils.pressFn("delete")()
 end)
 
+utils.launchApp(hyper, ",", "System Preferences")
 for key, app in pairs({
     a = "Activity Monitor",
     c = "Visual Studio Code",
+    m = "Mail",
+    n = "Notion",
     o = "Obsidian",
     s = "Slack",
     t = "Microsoft Teams",
@@ -33,7 +53,7 @@ end
 
 -- End Hyper Key Config
 
--- Start DoublePress Key Config
+-- Start Double-pressed Key Config
 
 for key, func in pairs({
     ctrl = nil,
@@ -46,6 +66,6 @@ for key, func in pairs({
     doublePress.new(key, func)
 end
 
--- End DoublePress Key Config
+-- End Double-pressed Key Config
 
 hs.alert.show("Config loaded")

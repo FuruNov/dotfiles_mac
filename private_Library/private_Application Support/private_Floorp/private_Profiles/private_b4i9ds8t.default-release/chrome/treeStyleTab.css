@@ -1,0 +1,28 @@
+:root.sidebar tab-item {
+    color: white;
+}
+
+:root.sidebar #background{
+  background: #112555;
+}
+
+tab-item tab-closebox {
+  display: none;
+}
+
+tab-item {
+  --tab-margin-bottom: 10px;
+  --tab-margin-top: 0px;
+  border: solid 5px #DDDDFF22;
+  box-shadow: -50px 10px 100px #FFFFFFAA;
+}
+
+tab-item tab-label {
+  overflow: unset;
+  white-space: nowrap;
+}
+
+tab-item tab-twisty {
+  margin-right: -0.5em;
+  opacity: 0 !important;
+}

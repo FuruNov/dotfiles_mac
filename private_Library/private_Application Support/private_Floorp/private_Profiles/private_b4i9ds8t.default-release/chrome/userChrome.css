@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+@-moz-document url(chrome://browser/content/browser.xhtml)
+{
+	.top-site-outer {
+		display: none !important;
+	}
+
+	.top-site-outer .hide-for-narrow {
+		display: none !important;
+	}
+
+	#sidebar-box[sidebarcommand='treestyletab_piro_sakura_ne_jp-sidebar-action']
+		#sidebar-header {
+		display: none;
+	}
+}
