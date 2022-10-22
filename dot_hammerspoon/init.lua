@@ -12,22 +12,27 @@ hs.hotkey.bind({}, 'F19', hyper.pressed, hyper.released)
 
 -- Start Hyper Key Config
 
-hyper:bind({}, 'g', function()
-    -- alert("Hyper Key pressed")
-    local screen = hs.mouse.getCurrentScreen()
-    if screen:getBrightness() > 0 then
-        screen:setBrightness(0)
-        Caffeine:start()
-    else
-        screen:setBrightness(0.25)
-        Caffeine:stop()
-    end
-end)
+-- hyper:bind({}, 'g', function()
+--     -- alert("Hyper Key pressed")
+--     local screen = hs.mouse.getCurrentScreen()
+--     if screen:getBrightness() > 0 then
+--         screen:setBrightness(0)
+--         Caffeine:start()
+--     else
+--         screen:setBrightness(0.25)
+--         Caffeine:stop()
+--     end
+-- end)
 hyper:bind({}, "r", hs.reload)
-hyper:bind({}, "h", utils.pressFn({"alt"}, "left"), nil, utils.pressFn({"alt"}, "left"))
-hyper:bind({}, "j", utils.pressFn("down"), nil, utils.pressFn("down"))
-hyper:bind({}, "k", utils.pressFn("up"), nil, utils.pressFn("up"))
-hyper:bind({}, "l", utils.pressFn({"alt"}, "right"), nil, utils.pressFn({"alt"}, "right"))
+
+-- hyper:bind({}, "h", utils.pressFn({"alt"}, "left"), nil, utils.pressFn({"alt"}, "left"))
+-- hyper:bind({}, "j", utils.pressFn("down"), nil, utils.pressFn("down"))
+-- hyper:bind({}, "k", utils.pressFn("up"), nil, utils.pressFn("up"))
+-- hyper:bind({}, "l", utils.pressFn({"alt"}, "right"), nil, utils.pressFn({"alt"}, "right"))
+-- hyper:bind({}, "h", function()
+--     hs.execute("open ~/")
+-- end)
+
 hyper:bind({}, "d", function()
     utils.pressFn("home")()
     utils.pressFn("home")()
@@ -35,11 +40,18 @@ hyper:bind({}, "d", function()
     utils.pressFn("delete")()
     utils.pressFn("delete")()
 end)
+-- hyper:bind({"cmd"}, "g", function()
+--     hs.urlevent.openURL("https://github.com/")
+-- end)
 
 utils.launchApp(hyper, ",", "System Preferences")
 for key, app in pairs({
     a = "Activity Monitor",
     c = "Visual Studio Code",
+    f = "Floorp",
+    g = "Gyazo",
+    h = "Finder",
+    l = "Logseq",
     m = "Mail",
     n = "Notion",
     o = "Obsidian",

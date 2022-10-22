@@ -1,8 +1,9 @@
 export PATH="$HOME/homebrew/bin:$PATH"
-export PATH="/Applications/Julia-1.6.app/Contents/Resources/julia/bin:$PATH"
+export PATH="/Users/taka2/Applications/Julia-1.6.app/Contents/Resources/julia/bin:$PATH"
 export PNPM_HOME="/Users/taka2/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 export PATH="/Users/taka2/Applications/quarto/bin:$PATH"
+export PATH="/Users/taka2/texlive/2022/bin/universal-darwin:$PATH"
 
 export FZF_COMPLETION_TRIGGER="," # default: '**'
 export FZF_DEFAULT_COMMAND="rg --files"

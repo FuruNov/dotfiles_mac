@@ -1,17 +1,41 @@
-@charset "UTF-8";
+:root.sidebar tab-item {
+  color: white;
+}
 
-@-moz-document url(chrome://browser/content/browser.xhtml)
-{
-	.top-site-outer {
-		display: none !important;
-	}
+:root.sidebar #background {
+  background: #112255;
+}
 
-	.top-site-outer .hide-for-narrow {
-		display: none !important;
-	}
+tab-item tab-closebox {
+  background: #FFFFFF55;
+  border-radius: 5px;
+}
 
-	#sidebar-box[sidebarcommand='treestyletab_piro_sakura_ne_jp-sidebar-action']
-		#sidebar-header {
-		display: none;
-	}
+tab-item {
+  --tab-margin-bottom: 10px;
+  --tab-margin-top: 0px;
+  font-size: 12px;
+  border: solid 5px #DDDDFF22;
+  box-shadow: -50px 150px 100px #AAFFFF33;
+}
+
+tab-item tab-label {
+  white-space: nowrap;
+}
+
+tab-item tab-twisty {
+  margin-right: 0.2em;
+  background: #FFFFFF55;
+  border-radius: 5px;
+  box-shadow: 1px 1px 100px 15px white;
+  opacity: 1 !important;
+}
+
+tab-item:not(:hover) tab-closebox {
+  display: none;
+}
+
+/*ブックマークバーのテキスト非表示（フォルダーはテキストも表示）*/
+.bookmark-item:not([type="menu"]) .toolbarbutton-text {
+  display: none !important;
 }
