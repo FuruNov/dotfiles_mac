@@ -54,7 +54,7 @@ for key, app in pairs({
     l = "Logseq",
     m = "Mail",
     n = "Notion",
-    o = "Obsidian",
+    o = "Microsoft Outlook",
     s = "Slack",
     t = "Microsoft Teams",
     v = "Vivaldi",

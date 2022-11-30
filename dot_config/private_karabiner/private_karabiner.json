@@ -191,6 +191,16 @@
             "simple_modifications": [
                 {
                     "from": {
+                        "key_code": "japanese_kana"
+                    },
+                    "to": [
+                        {
+                            "key_code": "f19"
+                        }
+                    ]
+                },
+                {
+                    "from": {
                         "key_code": "right_command"
                     },
                     "to": [
@@ -201,11 +211,21 @@
                 },
                 {
                     "from": {
-                        "key_code": "japanese_kana"
+                        "key_code": "left_control"
                     },
                     "to": [
                         {
-                            "key_code": "f19"
+                            "key_code": "escape"
+                        }
+                    ]
+                },
+                {
+                    "from": {
+                        "key_code": "caps_lock"
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_control"
                         }
                     ]
                 }
