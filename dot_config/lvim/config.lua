@@ -18,8 +18,6 @@ lvim.use_icons = true
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
-lvim.keys.normal_mode["<ScrollWheelUp>"] = lvim.keys.normal_mode["<C-y>"]
-lvim.keys.normal_mode["<ScrollWheelDown>"] = lvim.keys.normal_mode["<C-e>"]
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.insert_mode["<C-s>"] = "<Esc>:w<cr>a"
 lvim.keys.visual_mode["<C-s>"] = "<Esc>:w<cr>v"
@@ -317,3 +315,10 @@ vim.opt.spell = false
 vim.opt.spelllang = "en"
 vim.opt.scrolloff = 8 -- is one of my fav
 vim.opt.sidescrolloff = 8
+
+vim.keymap.set('n', '<ScrollWheelUp>', '<C-y>')
+vim.keymap.set('n', '<ScrollWheelDown>', '<C-e>')
+vim.keymap.set('i', '<ScrollWheelUp>', '<C-y>')
+vim.keymap.set('i', '<ScrollWheelDown>', '<C-e>')
+vim.keymap.set('v', '<ScrollWheelUp>', '<C-y>')
+vim.keymap.set('v', '<ScrollWheelDown>', '<C-e>')
