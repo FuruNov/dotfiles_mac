@@ -21,7 +21,7 @@ lvim.leader = "space"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
-lvim.keys.normal_mode["<S-r>"] = ":LvimReload<CR>"
+lvim.keys.normal_mode["<Leader>r"] = ":LvimReload<CR>"
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
@@ -192,11 +192,11 @@ lvim.plugins = {
     },
     {
       "camspiers/snap",
-      rocks = "fzy",
+      rocks = "fzf",
       config = function()
         local snap = require "snap"
         local layout = snap.get("layout").bottom
-        local file = snap.config.file:with { consumer = "fzy", layout = layout }
+        local file = snap.config.file:with { consumer = "fzf", layout = layout }
         local vimgrep = snap.config.vimgrep:with { layout = layout }
         snap.register.command("find_files", file { producer = "ripgrep.file" })
         snap.register.command("buffers", file { producer = "vim.buffer" })
