@@ -21,6 +21,7 @@ lvim.leader = "space"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["<S-r>"] = ":LvimReload<CR>"
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
@@ -174,6 +175,49 @@ lvim.plugins = {
         require("auto-save").setup()
       end,
     },
+    -- {
+    --   "kevinhwang91/rnvimr",
+    --   cmd = "RnvimrToggle",
+    --   config = function()
+    --     vim.g.rnvimr_draw_border = 1
+    --     vim.g.rnvimr_pick_enable = 1
+    --     vim.g.rnvimr_bw_enable = 1
+    --   end,
+    -- },
+    {
+      "windwp/nvim-ts-autotag",
+      config = function()
+        require("nvim-ts-autotag").setup()
+      end,
+    },
+    {
+      "camspiers/snap",
+      rocks = "fzy",
+      config = function()
+        local snap = require "snap"
+        local layout = snap.get("layout").bottom
+        local file = snap.config.file:with { consumer = "fzy", layout = layout }
+        local vimgrep = snap.config.vimgrep:with { layout = layout }
+        snap.register.command("find_files", file { producer = "ripgrep.file" })
+        snap.register.command("buffers", file { producer = "vim.buffer" })
+        snap.register.command("oldfiles", file { producer = "vim.oldfile" })
+        snap.register.command("live_grep", vimgrep {})
+      end,
+    },
+    { "tpope/vim-repeat" },
+    {
+      "sayanarijit/xplr.vim",
+      config = function()
+        vim.cmd([[
+          let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.9, 'highlight': 'Debug' } }
+          let g:nnn#action = {
+                \ '<c-t>': 'tab split',
+                \ '<c-x>': 'split',
+                \ '<c-v>': 'vsplit' }
+          let g:nnn#replace_netrw = 1
+        ]])
+      end,
+    },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -189,7 +233,24 @@ lvim.plugins = {
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
+lvim.autocommands = {
+    {
+        "BufWinLeave", -- see `:h autocmd-events`
+        {
+            command = "",
+        }
+    },
+    {
+        "BufWinEnter",
+        {
+            command = "",
+        }
+    }
+}
 --
+
+vim.opt.autochdir = true
+vim.opt.autoindent = true
 vim.opt.backup = false -- creates a backup file
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
