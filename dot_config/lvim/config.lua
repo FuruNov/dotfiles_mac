@@ -167,78 +167,124 @@ lvim.builtin.treesitter.highlight.enable = true
 
 -- Additional Plugins
 lvim.plugins = {
-    {
-      "folke/trouble.nvim",
-      cmd = "TroubleToggle",
-    },
-    {
-      "Pocco81/auto-save.nvim",
-      config = function()
-        require("auto-save").setup()
-      end,
-    },
-    -- {
-    --   "kevinhwang91/rnvimr",
-    --   cmd = "RnvimrToggle",
-    --   config = function()
-    --     vim.g.rnvimr_draw_border = 1
-    --     vim.g.rnvimr_pick_enable = 1
-    --     vim.g.rnvimr_bw_enable = 1
-    --   end,
-    -- },
-    {
-      "windwp/nvim-ts-autotag",
-      config = function()
-        require("nvim-ts-autotag").setup()
-      end,
-    },
-    {
-      "camspiers/snap",
-      rocks = "fzf",
-      config = function()
-        local snap = require "snap"
-        local layout = snap.get("layout").bottom
-        local file = snap.config.file:with { consumer = "fzf", layout = layout }
-        local vimgrep = snap.config.vimgrep:with { layout = layout }
-        snap.register.command("find_files", file { producer = "ripgrep.file" })
-        snap.register.command("buffers", file { producer = "vim.buffer" })
-        snap.register.command("oldfiles", file { producer = "vim.oldfile" })
-        snap.register.command("live_grep", vimgrep {})
-      end,
-    },
-    { "tpope/vim-repeat" },
-    {
-      "sayanarijit/xplr.vim",
-      config = function()
-        vim.cmd([[
-          let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.9, 'highlight': 'Debug' } }
-          let g:nnn#action = {
-                \ '<c-t>': 'tab split',
-                \ '<c-x>': 'split',
-                \ '<c-v>': 'vsplit' }
-          let g:nnn#replace_netrw = 1
-        ]])
-      end,
-    },
-    {
-      "karb94/neoscroll.nvim",
-      event = "WinScrolled",
-      config = function()
-        require('neoscroll').setup({
-          -- All these keys will be mapped to their corresponding default scrolling animation
-          mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
-                      '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
-          hide_cursor = true,          -- Hide cursor while scrolling
-          stop_eof = true,             -- Stop at <EOF> when scrolling downwards
-          use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
-          respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-          cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-          easing_function = nil,        -- Default easing function
-          pre_hook = nil,              -- Function to run before the scrolling animation starts
-          post_hook = nil,              -- Function to run after the scrolling animation ends
+  {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  },
+  {
+    "Pocco81/auto-save.nvim",
+    config = function()
+      require("auto-save").setup()
+    end,
+  },
+  -- {
+  --   "kevinhwang91/rnvimr",
+  --   cmd = "RnvimrToggle",
+  --   config = function()
+  --     vim.g.rnvimr_draw_border = 1
+  --     vim.g.rnvimr_pick_enable = 1
+  --     vim.g.rnvimr_bw_enable = 1
+  --   end,
+  -- },
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
+  {
+    "camspiers/snap",
+    rocks = "fzf",
+    config = function()
+      local snap = require "snap"
+      local layout = snap.get("layout").bottom
+      local file = snap.config.file:with { consumer = "fzf", layout = layout }
+      local vimgrep = snap.config.vimgrep:with { layout = layout }
+      snap.register.command("find_files", file { producer = "ripgrep.file" })
+      snap.register.command("buffers", file { producer = "vim.buffer" })
+      snap.register.command("oldfiles", file { producer = "vim.oldfile" })
+      snap.register.command("live_grep", vimgrep {})
+    end,
+  },
+  { "tpope/vim-repeat" },
+  {
+    "sayanarijit/xplr.vim",
+    config = function()
+      vim.cmd([[
+        let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.9, 'highlight': 'Debug' } }
+        let g:nnn#action = {
+              \ '<c-t>': 'tab split',
+              \ '<c-x>': 'split',
+              \ '<c-v>': 'vsplit' }
+        let g:nnn#replace_netrw = 1
+      ]])
+    end,
+  },
+  {
+    "karb94/neoscroll.nvim",
+    event = "WinScrolled",
+    config = function()
+      require('neoscroll').setup({
+        -- All these keys will be mapped to their corresponding default scrolling animation
+        mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
+                    '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+        hide_cursor = true,          -- Hide cursor while scrolling
+        stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+        use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+        respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+        easing_function = nil,        -- Default easing function
+        pre_hook = nil,              -- Function to run before the scrolling animation starts
+        post_hook = nil,              -- Function to run after the scrolling animation ends
+      })
+    end
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    event = { "VimEnter" },
+    config = function()
+      vim.defer_fn(function()
+        require("copilot").setup {
+            plugin_manager_path = get_runtime_dir() .. "/site/pack/packer",
+        }
+      end, 100)
+    end,
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua", "nvim-cmp" },
+  },
+  {
+    "ethanholz/nvim-lastplace",
+    event = "BufRead",
+    config = function()
+        require("nvim-lastplace").setup({
+            lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
+            lastplace_ignore_filetype = {
+                "gitcommit", "gitrebase", "svn", "hgcommit",
+            },
+            lastplace_open_folds = true,
         })
-      end
-    },
+    end,
+  },
+  {
+    "folke/persistence.nvim",
+      event = "BufReadPre", -- this will only start session saving when an actual file was opened
+      module = "persistence",
+      config = function()
+        require("persistence").setup {
+          dir = vim.fn.expand(vim.fn.stdpath "config" .. "/session/"),
+          options = { "buffers", "curdir", "tabpages", "winsize" },
+        }
+    end,
+  },
+}
+
+lvim.builtin.which_key.mappings["S"]= {
+  name = "Session",
+  c = { "<cmd>lua require('persistence').load()<cr>", "Restore last session for current dir" },
+  l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
+  Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
