@@ -1,0 +1,92 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+enable_passive: true
+passive_key: CTRL
+
+global_vars:
+  - name: 'greet'
+    type: 'echo'
+    params:
+      echo: 'Hey'
+
+# Matches are the substitution rules, when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # Simple text replacement
+  - trigger: ':espanso'
+    replace: 'Hi there!'
+
+  # Dates
+  - trigger: ':date'
+    replace: '{{date}}'
+    vars:
+      - name: date
+        type: date
+        params:
+          format: '%Y/%m/%d'
+
+  # Shell commands
+  - trigger: ':shell'
+    replace: '{{output}}'
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: 'echo Hello from your shell'
+
+  # passive commands
+  - trigger: ':hoge'
+    replace: 'hoge1=$0$, hoge2=$1$'
+    passive_only: true
+
+  # regex commands
+  - regex: ":greet\\((?P<person>.*)\\)"
+    replace: '{{greet}} {{person}}!'
+
+  - trigger: ':jlq'
+    replace: |
+      ```{julia}
+      #| eval: false
+      #| code-fold: false
+      $|$
+      ```
+
+  - trigger: ':jlm'
+    replace: |
+      if abspath(PROGRAM_FILE) == @__FILE__
+      end
+
+  # tex macros
+  - trigger: ':tex'
+    replace: >
+      {{newcommand}}h[1]{\hat{#1}}
+      {{newcommand}}d{\mathrm{d}}
+      {{newcommand}}pd{\partial}
+      {{newcommand}}↑{\uparrow}
+      {{newcommand}}↓{\downarrow}
+      {{newcommand}}←{\leftarrow}
+      {{newcommand}}→{\rightarrow}
+      {{newcommand}}tc[2]{\textcolor{#1}{#2}}
+      {{newcommand}}mc[1]{\mathcal{#1}}
+      {{newcommand}}pmat[1]{\begin{pmatrix}#1\end{pmatrix}}
+      {{newcommand}}pqty[1]{\left(#1\right)}
+      {{newcommand}}bmat[1]{\begin{bmatrix}#1\end{bmatrix}}
+      {{newcommand}}bqty[1]{\left\lbrack#1\right\rbrack}
+      {{newcommand}}vmat[1]{\begin{vmatrix}#1\end{vmatrix}}
+      {{newcommand}}vqty[1]{\left|#1\right|}
+      {{newcommand}}cqty[1]{\left\{#1\right\}}
+      {{newcommand}}aqty[1]{\left\langle#1\right\rangle}
+      {{newcommand}}dv[2]{\frac{\d #1}{\d #2}}
+      {{newcommand}}dnv[3]{\frac{\d^{#1}#2}{\d #3^{#1}}}
+      {{newcommand}}pdv[2]{\frac{\pd #1}{\pd #2}}
+      {{newcommand}}pdnv[3]{\frac{\pd^{#1}#2}{\pd #3^{#1}}}
+    vars:
+      - name: 'newcommand'
+        type: 'echo'
+        params:
+          echo: '\newcommand\'

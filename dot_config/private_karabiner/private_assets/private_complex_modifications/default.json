@@ -1,0 +1,9 @@
+{
+    "title": "Default Key Modification",
+    "rules": [
+        {
+            "description": "Default Key Modification",
+            "manipulators": []
+        }
+    ]
+}
