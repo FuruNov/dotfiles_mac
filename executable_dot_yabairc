@@ -12,8 +12,8 @@ yabai -m config active_window_opacity 1.0
 yabai -m config normal_window_opacity 0.95
 yabai -m config window_border off
 yabai -m config window_border_width 6
-yabai -m config active_window_border_color 0x6d57ff59
-yabai -m config normal_window_border_color 0x6e55ff55
+yabai -m config active_window_border_color 0x7ffcfdfe
+yabai -m config normal_window_border_color 0x3ffcfdfe
 yabai -m config insert_feedback_color 0x6d5fd75f
 yabai -m config split_ratio 0.50
 yabai -m config auto_balance on
@@ -24,9 +24,9 @@ yabai -m config mouse_action2 resize
 # general space settings
 yabai -m config layout bsp
 yabai -m config top_padding 35
-yabai -m config bottom_padding 0
-yabai -m config left_padding 0
-yabai -m config right_padding 0
+yabai -m config bottom_padding 5
+yabai -m config left_padding 5
+yabai -m config right_padding 5
 yabai -m config window_gap 10
 
 # restore position of floating windows when they are manually unfloated
