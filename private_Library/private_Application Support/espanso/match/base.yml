@@ -62,7 +62,7 @@ matches:
       end
 
   # tex macros
-  - trigger: ':tex'
+  - trigger: ':texm'
     replace: >
       {{newcommand}}h[1]{\hat{#1}}
       {{newcommand}}d{\mathrm{d}}
