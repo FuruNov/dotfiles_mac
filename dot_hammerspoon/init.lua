@@ -51,6 +51,7 @@ for key, app in pairs({
     f = "Floorp",
     g = "Gyazo",
     h = "Finder",
+    j = "JupyterLab",
     l = "Logseq",
     m = "Mail",
     n = "Notion",

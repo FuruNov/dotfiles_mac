@@ -1,70 +1,34 @@
 #!/bin/zsh
+. ~/homebrew/etc/profile.d/z.sh
 
-# グローバルエイリアス
-alias -g F='| fzf'
+alias -g F='| fzy' # グローバルエイリアス
 alias -g L='| less'
 alias -g G='| rg'
-
-# exaを使って見やすくかつ必要なフォルダのみ高速に表示
-alias te='exa -alhF --git-ignore --group-directories-first --time-style=long-iso'
+alias te='exa -alhF --git-ignore --group-directories-first --time-style=long-iso' # exaを使って見やすくかつ必要なフォルダのみ高速に表示
 alias te2='exa -alhF --git-ignore --group-directories-first --time-style=long-iso -T -L=2 --ignore-glob=".git|node_modules"'
 alias te3='exa -alhF --git-ignore --group-directories-first --time-style=long-iso -T -L=3 --ignore-glob=".git|node_modules"'
-
-# 階層を上がるのが楽
-alias ..='cd ..'
-
-# コマンドラインの文字をスッキリさせる
-alias c='clear'
-
-# 事故防止　コマンド実行の確認を出す
-alias rm='rm -i' # 削除
-alias mv='mv -i' # リネーム、ファイル・ディレクトリの移動
-alias cp='cp -i' # コピー
-
-alias mkdir='mkdir -p'
-
-# viでも強制的にvimを開く
-alias vi='vim'
-
-# pyでpythonを起動
-alias py='python3'
+alias ..='cd ..'       # 階層を上がるのが楽
+alias c='clear'        # コマンドラインの文字をスッキリさせる
+alias rm='rm -i'       # 削除
+alias mv='mv -i'       # リネーム、ファイル・ディレクトリの移動
+alias cp='cp -i'       # コピー
+alias mkdir='mkdir -p' # 事故防止　コマンド実行の確認を出す
+alias vi='vim'         # viでも強制的にvimを開く
+alias py='python3'     # pyでpythonを起動
 alias python='python3'
+alias ll='ls -alFG'            # lsよりコマンド打ちやすいllで、色付き隠しファイル込属性区別付きls
+alias pbcp='pbcopy <'          # ファイル内文字コピー
+alias figr='fd . | grep'       # 直下ディレクトリ全てのファイル名検索
+alias stgr='fd . | xargs grep' # 直下ディレクトリ全てのファイル内の文章検索
+alias cdwk='cd ~/work'         # 自分の作業フォルダへ移動
+alias pls='ps aux'             # メモリ監視
+alias sls='du -sh ./*'         # 容量監視
+alias sudo='sudo '             # sudo の後のコマンドでエイリアスを有効にする
+alias chap='chezmoi apply --force'
 
-# lsよりコマンド打ちやすいllで、色付き隠しファイル込属性区別付きls
-alias ll='ls -alFG'
-
-# ファイル内文字コピー
-alias pbcp='pbcopy <'
-
-# 直下ディレクトリ全てのファイル名検索
-alias figr='fd . | grep'
-
-# 直下ディレクトリ全てのファイル内の文章検索
-alias stgr='fd . | xargs grep'
-
-# 自分の作業フォルダへ移動
-alias cdwk='cd ~/work'
-
-# メモリ監視
-alias pls='ps aux'
-
-# 容量監視
-alias sls='du -sh ./*'
-
-# Activate fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-### fcd - cd to selected directory
-function fcd() {
-    local dir
-    dir=$(find ${1:-.} -path '*/\.*' -prune \
-        -o -type d -print 2>/dev/null | fzf +m) &&
-        cd "$dir"
-}
-
-### fzf-z-search
-function fzf-z-search() {
-    local res=$(z | sort -rn | cut -c 12- | fzf)
+### fzy-z-search
+function fzy-z-search() {
+    local res=$(z | sort -rn | cut -c 12- | fzy)
     if [ -n "$res" ]; then
         BUFFER+="cd $res"
         zle accept-line
@@ -72,19 +36,16 @@ function fzf-z-search() {
         return 1
     fi
 }
-zle -N fzf-z-search
-bindkey '^f' fzf-z-search
+zle -N fzy-z-search
+bindkey '^f' fzy-z-search
 
 ### 履歴検索
 function select-history() {
-    BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+    BUFFER=$(history -n -r 1 | fzy --no-sort +m --query "$LBUFFER" --prompt="History > ")
     CURSOR=$#BUFFER
 }
 zle -N select-history
 bindkey '^r' select-history
-
-# sudo の後のコマンドでエイリアスを有効にする
-alias sudo='sudo '
 
 # git の高速化（https://github.com/microsoft/WSL/issues/4401）
 # checks to see if we are in a windows or linux dir
@@ -104,54 +65,8 @@ function git {
     fi
 }
 
-# 新規リポジトリ作成 & 最初のコミット
-function gcre() {
-    git init
-    git add -A && git commit
-    read name"?type repo name        : "
-    read description"?type repo description : "
-    hub create ${name} -p ${description}
-    git push --set-upstream origin master
-    hub browse
-}
-
-# コミット
-function gcom() {
-    read "?type commit message >> " ms
-    git add -A && git status && git commit -m "${ms}"
-}
-
-# fbr - checkout git branch
-function fbr() {
-    local branches branch
-    branches=$(git branch -vv) &&
-        branch=$(echo "$branches" | fzf +m) &&
-        git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
-}
-
-# fbrm - checkout git branch (including remote branches)
-function fbrm() {
-    local branches branch
-    branches=$(git branch --all | grep -v HEAD) &&
-        branch=$(echo "$branches" |
-            fzf-tmux -d $((2 + $(wc -l <<<"$branches"))) +m) &&
-        git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-}
-
-# fshow - git commit browser
-function fshow() {
-    git log --graph --color=always \
-        --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-        fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
-            --bind "ctrl-m:execute:
-                (grep -o '[a-f0-9]\{7\}' | head -1 |
-                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
-                {}
-                FZF-EOF"
-}
-
 # 解凍
-function tunz() {
+function tunz {
     case $1 in
     *.zip) unzip $1 ;;
     *.tgz) tar xvzf $1 ;;
@@ -162,3 +77,15 @@ function tunz() {
     *) echo "Unable to extract '$1'" ;;
     esac
 }
+
+function post_msg_discord {
+    readonly MESSAGE=$1
+    readonly WEBHOOK_URL="https://discord.com/api/webhooks/1064303167455645816/PPHDL56f1CrxM--yCWekBsd6EEVwIXCepj44yZJ84aU7zSGdSmrDCuxv5bGOXp-bAEGn"
+
+    curl \
+        -X POST \
+        -H "Content-Type: application/json" \
+        -d "{\"content\": \"$MESSAGE\"}" \
+        "$WEBHOOK_URL"
+}
+alias pmsgd='post_msg_discord '
