@@ -280,26 +280,6 @@
                     "simple_modifications": [
                         {
                             "from": {
-                                "key_code": "left_option"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "left_command"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "left_command"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "left_option"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
                                 "key_code": "caps_lock"
                             },
                             "to": [
@@ -310,11 +290,11 @@
                         },
                         {
                             "from": {
-                                "key_code": "left_control"
+                                "key_code": "japanese_pc_nfer"
                             },
                             "to": [
                                 {
-                                    "key_code": "left_control"
+                                    "key_code": "japanese_eisuu"
                                 }
                             ]
                         },
@@ -330,11 +310,41 @@
                         },
                         {
                             "from": {
-                                "key_code": "japanese_pc_nfer"
+                                "key_code": "left_command"
                             },
                             "to": [
                                 {
-                                    "key_code": "japanese_eisuu"
+                                    "key_code": "left_option"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "left_control"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "left_control"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "left_option"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "left_command"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "japanese_pc_katakana"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "delete_forward"
                                 }
                             ]
                         }
