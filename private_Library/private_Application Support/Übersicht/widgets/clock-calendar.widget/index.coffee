@@ -53,7 +53,7 @@ style: """
     gap: 15px
     right: 15px
     position: relative
-    text-shadow: 1px 0px 12px rgba(0, 0, 0, 0.34);
+    text-shadow: 1px 0px 12px rgba(0, 0, 255, 0.9);
 
   .hour-min
     font-size: 8em
@@ -78,18 +78,18 @@ style: """
     &:first-child td
       font-size: 3em
       font-weight: 1000
-      text-shadow: 1px 0px 12px rgba(0, 0, 0, 0.34);
+      text-shadow: 1px 0px 12px rgba(0, 0, 255, 0.9);
 
 
     &:last-child td
       font-size: 1rem
       padding-bottom: 10px
       font-weight: 800
-      text-shadow: 1px 0px 6px rgba(0, 0, 0, 0.68);
+      text-shadow: 1px 0px 6px rgba(0, 0, 255, 0.9);
 
   tbody td
      font-weight: 700
-     text-shadow: 1px 0px 6px rgba(0, 0, 0, 0.68);
+     text-shadow: 1px 0px 6px rgba(0, 0, 255, 0.9);
 
   .today
     font-weight: bold

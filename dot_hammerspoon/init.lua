@@ -4,6 +4,8 @@ local hyper = require("hyper")
 local utils = require("utils")
 local Caffeine = hs.loadSpoon("Caffeine")
 -- local vim = require("vim")
+local stackline = require "stackline"
+stackline:init()
 
 -- Set eisu to toggle input method
 hs.hotkey.bind({}, "eisu", utils.setMethod("Hiragana (Google)"), utils.setMethod("Alphanumeric (Google)"))

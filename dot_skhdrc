@@ -43,3 +43,17 @@ alt - f : yabai -m window --toggle zoom-fullscreen
 # float / unfloat window and restore position
 # alt - t : yabai -m window --toggle float && /tmp/yabai-restore/$(yabai -m query --windows --window | jq -re '.id').restore 2>/dev/null || true
 alt - t : yabai -m window --toggle float && yabai -m window --grid 9:9:1:1:7:7
+
+# stackline
+# Stack window
+alt + ctrl - s : yabai -m window --stack next
+# Focus window up/down in stack
+alt + ctrl - n : yabai -m window --focus stack.next
+alt + ctrl - p : yabai -m window --focus stack.prev
+
+# Add the active window  to the window or stack to the {direction}
+# Note that this only works when the active window does *not* already belong to a stack
+alt + ctrl - left  : yabai -m window west --stack $(yabai -m query --windows --window | jq -r '.id')
+alt + ctrl - down  : yabai -m window south --stack $(yabai -m query --windows --window | jq -r '.id')
+alt + ctrl - up    : yabai -m window north --stack $(yabai -m query --windows --window | jq -r '.id')
+alt + ctrl - right : yabai -m window east --stack $(yabai -m query --windows --window | jq -r '.id')
