@@ -14,18 +14,18 @@ hs.hotkey.bind({}, 'F19', hyper.pressed, hyper.released)
 
 -- Start Hyper Key Config
 
--- hyper:bind({}, 'g', function()
---     -- alert("Hyper Key pressed")
+-- hyper:bind({'shift'}, 'g', function()
 --     local screen = hs.mouse.getCurrentScreen()
 --     if screen:getBrightness() > 0 then
 --         screen:setBrightness(0)
---         Caffeine:start()
+--         -- Caffeine:start()
 --     else
---         screen:setBrightness(0.25)
---         Caffeine:stop()
+--         screen:setBrightness(0.5)
+--         -- Caffeine:stop()
 --     end
 -- end)
 hyper:bind({}, "r", hs.reload)
+hyper:bind({}, "escape", hs.caffeinate.systemSleep)
 
 -- hyper:bind({}, "h", utils.pressFn({"alt"}, "left"), nil, utils.pressFn({"alt"}, "left"))
 -- hyper:bind({}, "j", utils.pressFn("down"), nil, utils.pressFn("down"))
