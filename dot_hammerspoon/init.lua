@@ -35,13 +35,13 @@ hyper:bind({}, "escape", hs.caffeinate.systemSleep)
 --     hs.execute("open ~/")
 -- end)
 
-hyper:bind({}, "d", function()
-    utils.pressFn("home")()
-    utils.pressFn("home")()
-    utils.pressFn({"shift"}, "end")()
-    utils.pressFn("delete")()
-    utils.pressFn("delete")()
-end)
+-- hyper:bind({}, "d", function()
+--     utils.pressFn("home")()
+--     utils.pressFn("home")()
+--     utils.pressFn({"shift"}, "end")()
+--     utils.pressFn("delete")()
+--     utils.pressFn("delete")()
+-- end)
 -- hyper:bind({"cmd"}, "g", function()
 --     hs.urlevent.openURL("https://github.com/")
 -- end)
@@ -50,6 +50,7 @@ utils.launchApp(hyper, ",", "System Preferences")
 for key, app in pairs({
     a = "Activity Monitor",
     c = "Visual Studio Code",
+    d = "DeepL",
     f = "Floorp",
     g = "Gyazo",
     h = "Finder",
