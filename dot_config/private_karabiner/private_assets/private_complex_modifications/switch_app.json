@@ -1,5 +1,5 @@
 {
-    "title": "Hotkeys to switch app",
+    "title": "Hotkeys for switching apps adn sleep with right_command",
     "rules": [
         {
             "description": "right_command-, to System Preferences",
@@ -311,6 +311,27 @@
                     "to": [
                         {
                             "shell_command": "open -a 'Zotero'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "right_command-esc to sleep",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "escape",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "pmset sleepnow"
                         }
                     ]
                 }

@@ -352,6 +352,27 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "right_command-esc to sleep",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "escape",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "pmset sleepnow"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
