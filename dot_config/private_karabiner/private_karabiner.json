@@ -18,94 +18,20 @@
                 },
                 "rules": [
                     {
-                        "description": "dd on MultiTouch",
+                        "description": "right_command-, to System Preferences",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "name": "d_pressed",
-                                        "type": "variable_unless",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "multitouch_extension_finger_count_total",
-                                        "type": "variable_unless",
-                                        "value": 0
-                                    }
-                                ],
                                 "from": {
-                                    "key_code": "d"
-                                },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 500
+                                    "key_code": ",",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ]
+                                    }
                                 },
                                 "to": [
                                     {
-                                        "set_variable": {
-                                            "name": "d_pressed",
-                                            "value": 1
-                                        }
-                                    }
-                                ],
-                                "to_delayed_action": {
-                                    "to_if_invoked": [
-                                        {
-                                            "set_variable": {
-                                                "name": "d_pressed",
-                                                "value": 0
-                                            }
-                                        }
-                                    ]
-                                },
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "d_pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "multitouch_extension_finger_count_total",
-                                        "type": "variable_unless",
-                                        "value": 0
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "d"
-                                },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "d_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "key_code": "left_arrow",
-                                        "modifiers": [
-                                            "left_command"
-                                        ]
-                                    },
-                                    {
-                                        "key_code": "left_arrow",
-                                        "modifiers": [
-                                            "left_command"
-                                        ]
-                                    },
-                                    {
-                                        "key_code": "right_arrow",
-                                        "modifiers": [
-                                            "left_command",
-                                            "left_shift"
-                                        ]
-                                    },
-                                    {
-                                        "key_code": "x",
-                                        "modifiers": [
-                                            "left_command"
-                                        ]
+                                        "shell_command": "open -a 'System Preferences'"
                                     }
                                 ],
                                 "type": "basic"
@@ -113,94 +39,293 @@
                         ]
                     },
                     {
-                        "description": "yy on MultiTouch",
+                        "description": "right_command-c to Visual Studio Code",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "name": "y_pressed",
-                                        "type": "variable_unless",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "multitouch_extension_finger_count_total",
-                                        "type": "variable_unless",
-                                        "value": 0
-                                    }
-                                ],
                                 "from": {
-                                    "key_code": "y"
-                                },
-                                "parameters": {
-                                    "basic.to_delayed_action_delay_milliseconds": 500
+                                    "key_code": "c",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ]
+                                    }
                                 },
                                 "to": [
                                     {
-                                        "set_variable": {
-                                            "name": "y_pressed",
-                                            "value": 1
-                                        }
+                                        "shell_command": "open -a 'Visual Studio Code'"
                                     }
                                 ],
-                                "to_delayed_action": {
-                                    "to_if_invoked": [
-                                        {
-                                            "set_variable": {
-                                                "name": "y_pressed",
-                                                "value": 0
-                                            }
-                                        }
-                                    ]
-                                },
                                 "type": "basic"
-                            },
+                            }
+                        ]
+                    },
+                    {
+                        "description": "right_command-d to DeepL",
+                        "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "name": "y_pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "name": "multitouch_extension_finger_count_total",
-                                        "type": "variable_unless",
-                                        "value": 0
-                                    }
-                                ],
                                 "from": {
-                                    "key_code": "y"
+                                    "key_code": "d",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ]
+                                    }
                                 },
                                 "to": [
                                     {
-                                        "set_variable": {
-                                            "name": "y_pressed",
-                                            "value": 0
-                                        }
-                                    },
-                                    {
-                                        "key_code": "left_arrow",
-                                        "modifiers": [
-                                            "left_command"
+                                        "shell_command": "open -a 'DeepL'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "right_command-g to Gyazo",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "g",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
                                         ]
-                                    },
+                                    }
+                                },
+                                "to": [
                                     {
-                                        "key_code": "left_arrow",
-                                        "modifiers": [
-                                            "left_command"
+                                        "shell_command": "open -a 'Gyazo'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "right_command-h to Finder",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
                                         ]
-                                    },
+                                    }
+                                },
+                                "to": [
                                     {
-                                        "key_code": "right_arrow",
-                                        "modifiers": [
-                                            "left_command",
-                                            "left_shift"
+                                        "shell_command": "open -a 'Finder'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "right_command-l to Logseq",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
                                         ]
-                                    },
+                                    }
+                                },
+                                "to": [
                                     {
-                                        "key_code": "c",
-                                        "modifiers": [
-                                            "left_command"
+                                        "shell_command": "open -a 'Logseq'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "right_command-m to Mail",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
                                         ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Mail'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "right_command-n to Notion",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Notion'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "right_command-o to Microsoft Outlook",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "o",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "Microsoft Outlook"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Slack'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "right_command-s to Slack",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Slack'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "right_command-t to Microsoft Teams",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "t",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Microsoft Teams'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "right_command-v to Vivaldi",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "v",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Vivaldi'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "right_command-w to Warp",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Warp'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "right_command-z to Zotero",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "z",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Zotero'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "right_command-a to Activity Monitor",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "a",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Activity Monitor'"
                                     }
                                 ],
                                 "type": "basic"
@@ -290,6 +415,16 @@
                         },
                         {
                             "from": {
+                                "key_code": "japanese_pc_katakana"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "delete_forward"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
                                 "key_code": "japanese_pc_nfer"
                             },
                             "to": [
@@ -335,16 +470,6 @@
                             "to": [
                                 {
                                     "key_code": "left_command"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "japanese_pc_katakana"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "delete_forward"
                                 }
                             ]
                         }
@@ -492,31 +617,11 @@
                 },
                 {
                     "from": {
-                        "key_code": "japanese_kana"
-                    },
-                    "to": [
-                        {
-                            "key_code": "f19"
-                        }
-                    ]
-                },
-                {
-                    "from": {
                         "key_code": "left_control"
                     },
                     "to": [
                         {
                             "key_code": "escape"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "right_command"
-                    },
-                    "to": [
-                        {
-                            "key_code": "delete_forward"
                         }
                     ]
                 }

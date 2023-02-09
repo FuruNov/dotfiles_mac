@@ -1,0 +1,320 @@
+{
+    "title": "Hotkeys to switch app",
+    "rules": [
+        {
+            "description": "right_command-, to System Preferences",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "comma",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a 'System Preferences'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "right_command-a to Activity Monitor",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "a",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a 'Activity Monitor'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "right_command-c to Visual Studio Code",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "c",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a 'Visual Studio Code'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "right_command-d to DeepL",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "d",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a 'DeepL'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "right_command-g to Gyazo",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "g",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a 'Gyazo'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "right_command-h to Finder",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "h",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a 'Finder'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "right_command-l to Logseq",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "l",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a 'Logseq'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "right_command-m to Mail",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "m",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a 'Mail'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "right_command-n to Notion",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "n",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a 'Notion'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "right_command-o to Microsoft Outlook",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "o",
+                        "modifiers": {
+                            "mandatory": [
+                                "Microsoft Outlook"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a 'Slack'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "right_command-s to Slack",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "s",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a 'Slack'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "right_command-t to Microsoft Teams",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "t",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a 'Microsoft Teams'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "right_command-v to Vivaldi",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "v",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a 'Vivaldi'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "right_command-w to Warp",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "w",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a 'Warp'"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "right_command-z to Zotero",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "z",
+                        "modifiers": {
+                            "mandatory": [
+                                "right_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a 'Zotero'"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

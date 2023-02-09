@@ -1,0 +1,26 @@
+{
+    "title": "Toggle IME",
+    "rules": [
+        {
+            "description": "Toggle IME",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "Japanese_eisuu"
+                    },
+                    "to": [
+                        {
+                            "key_code": "Japanese_kana"
+                        }
+                    ],
+                    "to_after_key_up": [
+                        {
+                            "key_code": "Japanese_eisuu"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
