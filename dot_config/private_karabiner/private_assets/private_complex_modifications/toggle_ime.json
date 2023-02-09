@@ -7,16 +7,16 @@
                 {
                     "type": "basic",
                     "from": {
-                        "key_code": "Japanese_eisuu"
+                        "key_code": "japanese_eisuu"
                     },
                     "to": [
                         {
-                            "key_code": "Japanese_kana"
+                            "key_code": "japanese_kana"
                         }
                     ],
                     "to_after_key_up": [
                         {
-                            "key_code": "Japanese_eisuu"
+                            "key_code": "japanese_eisuu"
                         }
                     ]
                 }
