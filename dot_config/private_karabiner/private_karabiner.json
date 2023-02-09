@@ -331,6 +331,27 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Toggle IME",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "japanese_eisuu"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "japanese_kana"
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "key_code": "japanese_eisuu"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
