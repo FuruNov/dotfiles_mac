@@ -7,8 +7,11 @@ tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "koekeishiya/formulae"
+tap "lyraphase/pcloud"
+tap "tsung-ju/iguanatexmac"
 tap "wez/wezterm"
 tap "xwmx/taps"
+brew "zstd"
 brew "webp"
 brew "bat"
 brew "bitwarden-cli"
@@ -23,6 +26,7 @@ brew "curl"
 brew "envchain"
 brew "exa"
 brew "fd"
+brew "libarchive"
 brew "ffmpeg"
 brew "fzf"
 brew "fzy"
@@ -95,3 +99,4 @@ mas "MouseCatch", id: 1625127067
 mas "RunCat", id: 1429033973
 mas "ScreenNote", id: 1258500140
 mas "Shortery", id: 1594183810
+mas "The Unarchiver", id: 425424353
